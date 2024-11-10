@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringManipulation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">whiteboxtesting</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">StringManipulation.java</span></div><h1>StringManipulation.java</h1><pre class="source lang-java linenums">package com.example;
+
+
+// Question  - https://leetcode.com/problems/string-compression/
+<span class="fc" id="L5">public class StringManipulation {</span>
+
+    public int compress(char[] chars) {
+<span class="fc" id="L8">        int i = 0, res = 0;</span>
+        
+<span class="fc bfc" id="L10" title="All 2 branches covered.">        while (i &lt; chars.length) {</span>
+<span class="fc" id="L11">            int groupLength = 1;</span>
+            
+            // Count the length of each group of consecutive characters
+<span class="fc bfc" id="L14" title="All 4 branches covered.">            while (i + groupLength &lt; chars.length &amp;&amp; chars[i + groupLength] == chars[i]) {</span>
+<span class="fc" id="L15">                groupLength++;</span>
+            }
+            
+            // Add the character to the result position
+<span class="fc" id="L19">            chars[res++] = chars[i];</span>
+            
+            // If the group length is more than 1, add the count to the result position
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            if (groupLength &gt; 1) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">                for (char c : Integer.toString(groupLength).toCharArray()) {</span>
+<span class="fc" id="L24">                    chars[res++] = c;</span>
+                }
+            }
+            
+            // Move to the next group of characters
+<span class="fc" id="L29">            i += groupLength;</span>
+        }
+        
+        // Return the new length of the compressed array
+<span class="fc" id="L33">        return res;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
